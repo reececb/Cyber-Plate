@@ -95,7 +95,7 @@ function displayNutrition(data) {
             <table class="performance-facts__table">
                 <thead>
                     <tr>
-                        <th colspan="3" class"amps">Amount Per Serving</th>
+                        <th colspan="3" class"amps">Amount Per Recipe</th>
                     </tr>
                 </thead>
                 <tbody>
