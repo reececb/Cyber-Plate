@@ -13,10 +13,10 @@ and can even find many abstract or uncommon recipes. It is responsively formatte
 
 ### Screenshots  
 Landing page with search functions  
-(screenshots/landing_screen_Cyber_Plate.png)  
+![landing screen](screenshots/landing_screen_Cyber_Plate.png)  
 
 Recipe search results with nutritional information  
-(screenshots/recipe_results.png)  
+![Recipe results](screenshots/recipe_results.png)  
 
 ### Search function  
 - There are two search bars on the landing page. The placeholders provide examples or explain the search function.  
