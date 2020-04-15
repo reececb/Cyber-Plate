@@ -5,39 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cyber Plate</title>
     <link rel="stylesheet" href="main.css">
-    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
    <main>
        <nav id="navigation">
-           <img id="logo" src="images/cyberplatelogo.png" alt="Cyber Plate Logo">
-           <a class="nav-links" href="#recipe-form-container">Recipes</a>
-           <a class="nav-links" href="#nutrition-form-container">Nutrition</a>
+           <img id="logo" src="images/cyber_plate_logo.png" alt="Cyber Plate Logo">
        </nav>
-       <div id="recipe-form-container">
-         <form id="js-recipes">
-            <label class="search-label" id="recipe-search-label">Search for Recipes</label>
-            <input type="text" placeholder="E.g. spaghetti, chicken, vegan, vegetarian" id="recipe-input">
-            <input type="text" placeholder="How many recipes to return. Max = 25" id="quantity-input">
-            <input class="search-button"id="recipe-search-button" type="submit">
+       <div class="big-background">
+        <div id="recipe-form-container">
+            <form id="js-recipes">
+                <span class="search-label" id="recipe-search-label">Search for Recipes</span>
+                <input type="text" placeholder="E.g. spaghetti, chicken, vegan, vegetarian" id="recipe-input">
+                <input type="text" placeholder="How many recipes to return. Max = 25" id="quantity-input" value="5">
+                <button class="btn" type="submit" href="#recipe-results">
+                Search Recipes
+                <span class="bg"></span>
+                </button> 
+            
             <div id="error-container">
                 <p id="error-message">Please enter a quantity of 25 or lower.</p>
             </div>
+            <div id="scroll-message-container">
+                <p id="scroll-message">Your results are waiting below!</p>
+            </div>
          </form>
         </div>
+       </div>
 
        <section id="recipe-results">
         </section>
-        <div id="nutrition-form-container">
-        <form id="js-nutrition">
-            <label class="search-label" id="nutr-search-label">Search for Nutrional Information</label>
-            <input type="text" placeholder="E.g. 6 oz chicken, 1 egg, 1/4 cup rice" id="nutrition-input">
-            <input class="search-button" id="nutrition-search-button" type="submit">
-            <p id="nutrition-search-description">Search for an individual ingredient and find out about its nutritional content. Enter a quantity, measure, and type of food or ingredient.</p>
-        </form>
-        <div id="nutrition-label"></div>
-        </div>
         <footer>
             <div id="attribution">
                 <img src="images/attribution.png" id="attribution-img" alt="powered by Edamam">

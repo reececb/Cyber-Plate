@@ -5,6 +5,7 @@ const appKey = "96f02e5aa28d21c0629922f3930278b6";
 function searchRecipes() {
     $("#js-recipes").submit(event => {
         event.preventDefault();
+        let recipes = document.getElementById("recipe-results");
         let userInput = $("#recipe-input").val();
         let quantityInput = $("#quantity-input").val();
         if (quantityInput > 25) {
@@ -12,16 +13,9 @@ function searchRecipes() {
         }
         else {
             $('#error-container').hide();
+            $('#scroll-message').show();
             getRecipeData(userInput, quantityInput);
         }
-    });
-}
-function searchNutrition() {
-    $("#js-nutrition").submit(event => {
-        event.preventDefault();
-        $("#nutrition-search-description").hide();
-        let otherUserInput = $("#nutrition-input").val();
-        getNutritionData(otherUserInput);
     });
 }
 
@@ -53,43 +47,22 @@ function getRecipeData(userInput, quantityInput) {
     });
 }
 
-function getNutritionData(otherUserInput) {
-    const params = {
-        app_id: "353de531",
-        app_key: "305732c45f5ddf9dcbee5b1c0e77f749",
-        ingr: otherUserInput,   
-    }
-    let queryString = formatQueryParams(params);
-    let url = nutritionUrl + "?" + queryString;
-
-    fetch(url)
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      }
-    })  
-    .then(responseJson => {
-        displayNutrition(responseJson);
-    });
-}
-
 function displayRecipe(data) {
     console.log(data);
     let recipeHtml = "";
     for (let i = 0; i < data.hits.length; i++){
         recipeHtml += `
         <div class="recipes">
-        <li><h3>${data.hits[i].recipe.label}</h3>
-        <img class="recipe-img" src="${data.hits[i].recipe.image}">
-        <p><a href="${data.hits[i].recipe.url}" target="_blank">Go to Recipe</a></p>
-        <p>Recipe From: ${data.hits[i].recipe.source}</p>
+            <li><h3>${data.hits[i].recipe.label}</h3>
+                <img class="recipe-img" src="${data.hits[i].recipe.image}">
+                <a class="btn" href="${data.hits[i].recipe.url}" target="_blank">Go to Recipe</a>
+                <p>Recipe From: ${data.hits[i].recipe.source}</p>
+            </li>
+            ${displayNutrition(data.hits[i].recipe)}
         </div>`
     }
     $('#recipe-results').html(recipeHtml);
 
-}
-function populateLabel(nutritionHtml) {
-    $("#nutrition-label").html(nutritionHtml);
 }
 function displayNutrition(data) {
     console.log(data);
@@ -130,7 +103,7 @@ function displayNutrition(data) {
                         <th colspan="2" id="lkcal-val-cal">
                             <b>Calories</b>
                         </th>
-                        <td class="nob">${data.calories}</td>
+                        <td class="nob">${Math.round(data.calories)}</td>
                     </tr>
                     <tr class="thick-row">
                         <td colspan="3" id="daily-value">
@@ -170,6 +143,12 @@ function displayNutrition(data) {
                         </th>
                         <td><b>${dailyCarbs}%</b></td>
                     </tr>
+                    <tr>
+                        <th colspan="2">
+                            <b>Total Sugar</b>
+                            ${Math.round(data.totalNutrients.SUGAR.quantity)}${data.totalNutrients.SUGAR.unit}
+                        </th>
+                        <td><b>**</b></td>
                     <tr class="thick-end">
                         <th colspan="2">
                             <b>Protein</b>
@@ -208,7 +187,6 @@ function displayNutrition(data) {
 
 
     </section>`
-    populateLabel(nutritionHtml);
+    return nutritionHtml
 }
 $(searchRecipes);
-$(searchNutrition);

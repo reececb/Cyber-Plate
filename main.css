@@ -1,8 +1,11 @@
 * {
     box-sizing: border-box;
 }
+html {
+    background-color: rgb(36, 36, 36);
+}
 body {
-    font-family: 'Source Code Pro', monospace;
+    font-family: 'Lato', sans-serif;
     margin: 0;
 }
 #attribution {
@@ -10,46 +13,29 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background: white;
 }
 #navigation {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background-color: white;
 }
 
 #logo {
     width: 120px;
     height: auto;
 }
-.nav-links {
-    text-decoration: none;
-    margin-bottom: 20px;
-}
 
-#recipe-form-container, #nutrition-form-container {
+#recipe-form-container {
+    background:  linear-gradient(0deg,  rgb(36, 36, 36)0%, rgba(0,0,0,0.4) 45%, rgba(124, 96, 96, 0.1) 100%) no-repeat center center, url(images/food.jpg) no-repeat center center;
+    background-size: 1000px;
     width: 100%;
-    height: 500px;
+    height: 850px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-#recipe-form-container {
-    background: url(images/CyberPlate.png) repeat center center;
-    background-size: 300px;
-    border-bottom: 5px solid white;
-}
-#nutrition-form-container {
-    background: url(images/food.jpg) center center;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 700px;
-}
+
 p {
     text-align: center;
 }
@@ -57,58 +43,30 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: white;
     padding: 15px;
-}
-#js-nutrition {
-    background: none;
-}
-.search-button {
-    font-size: 14px;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 10px;
-    border-radius: 15px;
-}
-#nutrition-search-description {
-    background: rgb(41, 133, 41);
-    border-radius: 15px;
-    color: white;
-    width: 300px;
-    padding: 12px;
-    font-weight: bold;
-    font-size: 14px;
-    text-shadow: 
-    -1px -1px 0 #000,  
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;
 }
 
 
 .search-label {
     padding: 8px;
-    font-weight: 900;
-    font-size: 14px;
-    border-radius: 35px;
+    font-weight: lighter;
+    font-size: 25px;
     text-align: center;
     height: auto;
-    width: 200px;
-    text-shadow: 
-    -1px -1px 0 #000,  
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;
+    width: 280x;
 }
 #recipe-search-label {
-    color: white;;
-    background: rgb(132, 91, 185)
-}
-#nutr-search-label {
     color: white;
-    background: rgb(41, 133, 41);
 }
-#nutrition-input, #recipe-input {
+#recipe-input, #quantity-input {
+    background: rgba(0, 0, 0, 0.452);
+    border-bottom: 2px solid rgb(102, 182, 71);
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    color: white;
+}
+#recipe-input {
     margin-top: 25px;
     margin-bottom: 25px;
     width: 275px;
@@ -117,8 +75,57 @@ form {
     margin-bottom: 25px;
     width: 275px;
 }
+::placeholder {
+    color: rgb(102, 182, 71);
+}
+:-ms-input-placeholder {
+    color: rgb(102, 182, 71);
+}
+::-ms-input-placeholder {
+    color: rgb(102, 182, 71)
+}
+.btn {
+    border: none;
+    background: none;
+    padding: 5px;
+    text-decoration: none;
+    line-height: 1;
+    
+    position: relative;
+    z-index: 0;
+    padding: 5px 5px;
+    overflow: hidden;
+    color: white;
+    vertical-align: bottom;
+    transition: color .3s ease-out;
+}
+
+.btn:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    transform: translateY(calc(100% - 2px));
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(60deg, #ffffff 0%, #72b926 100%);
+    transition: transform .25s ease-out;
+}
+.btn:hover { 
+    color: #000000; 
+ }
+.btn:hover::before {
+    transform: translateY(0);
+    transition: transform .25s ease-out;
+ }
+
+
+
+
 #error-container {
-    background: red;
+    border: 2px solid red;
+    background: none;
     color: white;
     border-radius: 20px;
     font-size: 18px;
@@ -127,14 +134,22 @@ form {
     margin: 25px;
     width: 80%;
 }
+#scroll-message {
+    display: none;
+    padding: 45px;
+    font-weight:bolder;
+    color: rgb(102, 182, 71);
+    font-size: 25px;
+}
 
 
 #recipe-results {
     width: 100%;
     height: auto;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
+    align-items: center;
     flex-wrap: wrap;
     list-style-type: none;
 }
@@ -146,12 +161,12 @@ li {
     padding: 45px;
 }
 .recipes {
-    color: black;
+    color: white;
     margin: 40px;
+    margin-bottom: 0;
     font-size: 18px;
     width: 250px;
     text-align: center;
-    border-radius: 5px;
 }
 .recipe-img {
     width: 140px;
@@ -168,7 +183,7 @@ li {
     border: 1px solid black;
     background-color: white;
     color: black;
-    width: 250px;
+    width: 240px;
     height: auto;
     font-size: 14px;
     font-family: 'Roboto';
@@ -178,17 +193,17 @@ li {
 }
 .performance-facts__title {
     font-weight: 100;
-    font-size: 28px;
+    font-size: 22px;
     margin-bottom: 10px;
 }
 .performance-facts__table, .performance-facts__table--grid {
-    width: 215px;
+    width: 185px;
 }
 thead, #lkcal-val-cal {
     text-align: left;
 }
 #lkcal-val-cal {
-    font-size: 24px;
+    font-size: 18px;
     padding-top: 2.5px;
     padding-left: 2.5px;
 }
@@ -206,19 +221,24 @@ td {
 
 footer {
     width: 100%;
-    background: white;
 }
 #attribution-img {
     width: 200px;
 }
 
 @media (min-width: 600px) {
+    .big-background {
+        width: 100%;
+        background: linear-gradient(0deg,  rgb(36, 36, 36)0%, rgba(0,0,0,0.4) 45%, rgba(124, 96, 96, 0.1) 100%) no-repeat center center, url(images/food.jpg) no-repeat center center;
+        background-size: cover;
+    }
+
     #navigation {
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
         align-items: center;
-        height: 80px;
+        height: 100px;
     }
     
     #logo {
@@ -231,6 +251,9 @@ footer {
         height: 80px;
         justify-content: flex-end;
     }
+    #attribution-img {
+        margin-right: 25px;
+    }
     .nav-links {
         margin-top: 20px;
         margin-right: 60px;
@@ -239,18 +262,15 @@ footer {
         font-weight: 600;
         font-size: 20px;
     }
-    #recipe-form-container, #nutrition-form-container {
-        height: 1000px;
+    #recipe-form-container {
+        background: none;
     }
     .search-label {
         font-size: 22px;
         padding: 10px;
         width: 350px;
     }
-    #nutrition-search-description {
-        font-size: 18px;
-    }
-    #recipe-input, #nutrition-input, #quantity-input {
+    #recipe-input, #quantity-input {
         width: 400px;
         font-size: 22px;
     }
@@ -263,5 +283,25 @@ footer {
     #error-container {
         width: 100%;
     }
+    .recipes {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        font-size: 28px;
+        width: 560px;
+    }
+    li {
+        margin-right: 50px;
+    }
 
+}
+@media (min-width: 1100px) {
+    li {
+        margin-right: 200px;
+        width: 550px;
+    }
+    .recipes {
+        width: 900px;
+    }
 }
