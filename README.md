@@ -3,7 +3,7 @@
 
 ## Github repository  
 - https://github.com/reececb/Cyber-Plate  
-### Live site  
+## Live site  
 - https://reececb.github.io/Cyber-Plate/
 
 ### Why is this app useful?  
@@ -30,6 +30,12 @@ Recipe search results with nutritional information
 - Results will display in the section underneath the query/landing page.  
 - The title, an image of the recipe, a url link, and where the recipe is from will be displayed.  
 - A nutritional label with information will be displayed below or to the right of each recipe.  
+
+## Key Technologies  
+- HTML  
+- CSS  
+- JavaScript  
+- jQuery  
 
 ## Author  
 - Reece Bryant
