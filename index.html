@@ -16,16 +16,21 @@
        <div class="big-background">
         <div id="recipe-form-container">
             <form id="js-recipes">
-                <span class="search-label" id="recipe-search-label">Search for Recipes</span>
-                <input type="text" placeholder="E.g. spaghetti, chicken, vegan, vegetarian" id="recipe-input">
-                <input type="text" placeholder="How many recipes to return. Max = 25" id="quantity-input" value="5">
-                <button class="btn" type="submit" href="#recipe-results">
+                <h2 class="search-label" id="recipe-search-label">Search for Recipes</h2>
+                <label id="keyword-label">Please enter keywords for recipes</label>
+                <input type="text" placeholder="E.g. spaghetti, chicken, vegan, vegetarian" id="recipe-input" required>
+                <label id="quantity-label">Number of recipes to include in results</label>
+                <input type="text" placeholder="Max = 25" id="quantity-input" required>
+                <button class="btn" type="submit">
                 Search Recipes
                 <span class="bg"></span>
                 </button> 
             
             <div id="error-container">
                 <p id="error-message">Please enter a quantity of 25 or lower.</p>
+            </div>
+            <div id="js-error-message-container">
+                <p id="js-error-message"></p>
             </div>
             <div id="scroll-message-container">
                 <p id="scroll-message">Your results are waiting below!</p>
@@ -34,7 +39,7 @@
         </div>
        </div>
 
-       <section id="recipe-results">
+       <section class="recipe-results">
         </section>
         <footer>
             <div id="attribution">
