@@ -46,6 +46,7 @@ function getRecipeData(userInput, quantityInput) {
     })  
     .then(responseJson => displayRecipe(responseJson))
     .catch(err => {
+        console.log(err);
         $('#js-error-message').text(`Something went wrong: ${err.message}. Please check your connection, and make sure the search fields were filled out with correct values.`);
         $('#js-error-message').show();
         $('#scroll-message').hide();
@@ -73,27 +74,39 @@ function displayRecipe(data) {
 }
 function displayNutrition(data) {
     const totalCalories = `${data.calories}`/`${data.yield}`;
-    const totalFat =  `${data.totalNutrients.FAT.quantity}`/`${data.yield}`;
-    const saturatedFat = `${data.totalNutrients.FASAT.quantity}`/`${data.yield}`;
-    const cholesterol = `${data.totalNutrients.CHOLE.quantity}`/`${data.yield}`;
-    const sodium = `${data.totalNutrients.NA.quantity}`/`${data.yield}`;
-    const carbs = `${data.totalNutrients.CHOCDF.quantity}`/`${data.yield}`;
-    const protein = `${data.totalNutrients.PROCNT.quantity}`/`${data.yield}`;
-    const vitd = `${data.totalNutrients.VITD.quantity}`/`${data.yield}`;
-    const calcium = `${data.totalNutrients.CA.quantity}`/`${data.yield}`;
-    const iron = `${data.totalNutrients.FE.quantity}`/`${data.yield}`;
-    const k = `${data.totalNutrients.K.quantity}`/`${data.yield}`;
-    const dailyFat = `${data.totalDaily.FAT.quantity}`/`${data.yield}`;
-    const dailySatFat = `${data.totalDaily.FASAT.quantity}`/`${data.yield}`;
-    const dailyCholesterol = `${data.totalDaily.CHOLE.quantity}`/`${data.yield}`;
-    const dailySodium = `${data.totalDaily.NA.quantity}`/`${data.yield}`;
-    const dailyCarbs = `${data.totalDaily.CHOCDF.quantity}`/`${data.yield}`;
-    const dailyProtein = `${data.totalDaily.PROCNT.quantity}`/`${data.yield}`;
-    const dailyVitD = `${data.totalDaily.VITD.quantity}`/`${data.yield}`;
-    const dailyCalcium = `${data.totalDaily.CA.quantity}`/`${data.yield}`;
-    const dailyIron = `${data.totalDaily.FE.quantity}`/`${data.yield}`;
-    const dailyPotassium = `${data.totalDaily.K.quantity}`/`${data.yield}`;
-    const totalSugar = `${data.totalNutrients.SUGAR.quantity}`/`${data.yield}`;
+    const totalFat =  data.totalNutrients.FAT ? `${data.totalNutrients.FAT.quantity}`/`${data.yield}` : "";
+    const saturatedFat = data.totalNutrients.FASAT ? `${data.totalNutrients.FASAT.quantity}`/`${data.yield}` : "";
+    const cholesterol = data.totalNutrients.CHOLE ? `${data.totalNutrients.CHOLE.quantity}`/`${data.yield}` : "";
+    const sodium = data.totalNutrients.NA ? `${data.totalNutrients.NA.quantity}`/`${data.yield}` : "";
+    const carbs = data.totalNutrients.CHOCDF ? `${data.totalNutrients.CHOCDF.quantity}`/`${data.yield}` : "";
+    const protein = data.totalNutrients.PROCNT ? `${data.totalNutrients.PROCNT.quantity}`/`${data.yield}` : "";
+    const vitd = data.totalNutrients.VITD ? `${data.totalNutrients.VITD.quantity}`/`${data.yield}` : "";
+    const calcium = data.totalNutrients.CA ? `${data.totalNutrients.CA.quantity}`/`${data.yield}` : "";
+    const iron = data.totalNutrients.FE ? `${data.totalNutrients.FE.quantity}`/`${data.yield}` : "";
+    const k = data.totalNutrients.K ? `${data.totalNutrients.K.quantity}`/`${data.yield}` : "";
+    const dailyFat = data.totalDaily.FAT ? `${data.totalDaily.FAT.quantity}`/`${data.yield}` : "";
+    const dailySatFat = data.totalDaily.FASAT ? `${data.totalDaily.FASAT.quantity}`/`${data.yield}` : "";
+    const dailyCholesterol = data.totalDaily.CHOLE ? `${data.totalDaily.CHOLE.quantity}`/`${data.yield}` : "";
+    const dailySodium = data.totalDaily.NA ? `${data.totalDaily.NA.quantity}`/`${data.yield}` : "";
+    const dailyCarbs = data.totalDaily.CHOCDF ? `${data.totalDaily.CHOCDF.quantity}`/`${data.yield}` : "";
+    const dailyProtein = data.totalDaily.PROCNT ? `${data.totalDaily.PROCNT.quantity}`/`${data.yield}` : "";
+    const dailyVitD = data.totalDaily.VITD ? `${data.totalDaily.VITD.quantity}`/`${data.yield}` : "";
+    const dailyCalcium = data.totalDaily.CA ? `${data.totalDaily.CA.quantity}`/`${data.yield}` : "";
+    const dailyIron = data.totalDaily.FE ? `${data.totalDaily.FE.quantity}`/`${data.yield}` : "";
+    const dailyPotassium = data.totalDaily.K ? `${data.totalDaily.K.quantity}`/`${data.yield}` : "";
+    const totalSugar = data.totalNutrients.SUGAR ? `${data.totalNutrients.SUGAR.quantity}`/`${data.yield}` :"";
+    const fatUnit = data.totalNutrients.FAT ? `${data.totalNutrients.FAT.unit}` : "";
+    const satFatUnit = data.totalNutrients.FASAT ? `${data.totalNutrients.FASAT.unit}` : "";
+    const choleUnit = data.totalNutrients.CHOLE ? `${data.totalNutrients.CHOLE.unit}` : "";
+    const naUnit = data.totalNutrients.NA ? `${data.totalNutrients.NA.unit}` : "";
+    const carbUnit = data.totalNutrients.CHOCDF ? `${data.totalNutrients.CHOCDF.unit}` : "";
+    const sugarUnit = data.totalNutrients.SUGAR ? `${data.totalNutrients.SUGAR.unit}` : "";
+    const proUnit = data.totalNutrients.PROCNT ? `${data.totalNutrients.PROCNT.unit}` : "";
+    const vitdUnit = data.totalNutrients.VITD ? `${data.totalNutrients.VITD.unit}` : "";
+    const caUnit = data.totalNutrients.CA ? `${data.totalNutrients.CA.unit}` : "";
+    const feUnit = data.totalNutrients.FE ? `${data.totalNutrients.FE.unit}` : "";
+    const kUnit = data.totalNutrients.K ? `${data.totalNutrients.K.unit}` : "";
+
     let nutritionHtml = "";
     nutritionHtml += `
         <section class="performance-facts" id="performance-facts">
@@ -121,46 +134,46 @@ function displayNutrition(data) {
                     <tr>
                         <th colspan="2">
                             <b>Total Fat</b>
-                            ${Math.round(totalFat)}${data.totalNutrients.FAT.unit}
+                            ${Math.round(totalFat)}${fatUnit}
                         </th>
                         <td><b>${Math.round(dailyFat)}%</b></td>
                     </tr>
                     <tr>
                         <td class="blank-cell"></td>
-                        <th>Saturated Fat ${Math.round(saturatedFat)}${data.totalNutrients.FASAT.unit}</th>
+                        <th>Saturated Fat ${Math.round(saturatedFat)}${satFatUnit}</th>
                         <td><b>${Math.round(dailySatFat)}%</b></td>
                     </tr>
                     <tr>
                         <th colspan="2">
                             <b>Cholesterol</b>
-                            ${Math.round(cholesterol)}${data.totalNutrients.CHOLE.unit}
+                            ${Math.round(cholesterol)}${choleUnit}
                         </th>
                         <td><b>${Math.round(dailyCholesterol)}%</b></td>
                     </tr>
                     <tr>
                         <th colspan="2">
                             <b>Sodium</b>
-                            ${Math.round(sodium)}${data.totalNutrients.NA.unit}
+                            ${Math.round(sodium)}${naUnit}
                         </th>
                         <td><b>${Math.round(dailySodium)}%</b></td>
                     </tr>
                     <tr>
                         <th colspan="2">
                             <b>Total Carbohydrate</b>
-                            ${Math.round(carbs)}${data.totalNutrients.CHOCDF.unit}
+                            ${Math.round(carbs)}${carbUnit}
                         </th>
                         <td><b>${Math.round(dailyCarbs)}%</b></td>
                     </tr>
                     <tr>
                         <th colspan="2">
                             <b>Total Sugar</b>
-                            ${Math.round(totalSugar)}${data.totalNutrients.SUGAR.unit}
+                            ${Math.round(totalSugar)}${sugarUnit}
                         </th>
                         <td><b>**</b></td>
                     <tr class="thick-end">
                         <th colspan="2">
                             <b>Protein</b>
-                            ${Math.round(protein)}${data.totalNutrients.PROCNT.unit}
+                            ${Math.round(protein)}${proUnit}
                         </th>
                         <td><b>${Math.round(dailyProtein)}%</b></td>
                     </tr>
@@ -169,20 +182,20 @@ function displayNutrition(data) {
             <table class="performance-facts__table--grid">
                 <tbody>
                     <tr>
-                    <th>Vitamin D ${Math.round(vitd)}${data.totalNutrients.VITD.unit}</th>
+                    <th>Vitamin D ${Math.round(vitd)}${vitdUnit}</th>
                     <td><b>${Math.round(dailyVitD)}%</b></td>
                     </tr>
                     <tr>
-                        <th>Calcium ${Math.round(calcium)}${data.totalNutrients.CA.unit}</th>
+                        <th>Calcium ${Math.round(calcium)}${caUnit}</th>
                         <td><b>${Math.round(dailyCalcium)}%</b></td>
                     </tr>
                     <tr>
-                        <th>Iron ${Math.round(iron)}${data.totalNutrients.FE.unit}</th>
+                        <th>Iron ${Math.round(iron)}${feUnit}</th>
                         <td>
                             <b>${Math.round(dailyIron)}%</b></td>
                     </tr>
                     <tr class="thin-end">
-                        <th>Potassium ${Math.round(k)}${data.totalNutrients.K.unit}</th>
+                        <th>Potassium ${Math.round(k)}${kUnit}</th>
                         <td><b>${Math.round(dailyPotassium)}%</b></td>
                     </tr>
                 </tbody>
